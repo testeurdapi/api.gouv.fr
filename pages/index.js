@@ -9,8 +9,9 @@ import { getAllAPIs } from '../utils/api';
 import Page from '../layouts/page';
 
 import ApiCard from '../components/api-card';
-import APISearchBar from '../components/api-search-bar';
 import PreFooter from '../components/preFooter';
+
+import { TypingCarroussel } from '../uiComponents';
 
 import colors from '../styles/colors';
 
@@ -34,22 +35,26 @@ const filterAPI = (list, filter) => {
   return filteredList;
 };
 
-function Home({ q, filter, apiList }) {
+const Home = ({ q, filter, apiList }) => {
   const filteredList = filterAPI(apiList, filter);
-
   return (
     <Page>
       <section id="mission-statement">
         <div className="header-with-image">
-          <img
-            className="nav__logo"
-            src="/images/api.gouv.fr.svg"
-            alt="Logo de api.gouv.fr"
-          />
-          <div className="baseline">
-            <h2 className="ui header">{SITE_DESCRIPTION}</h2>
-            <APISearchBar q={q} list={apiList} />
-          </div>
+          <h1>
+            <TypingCarroussel
+              prefix="Vous êtes "
+              sentences={[
+                'une collectivité ?',
+                'un ministère ?',
+                'un éditeur ?',
+              ]}
+            />
+          </h1>
+          <h3>
+            Construisez des services innovants en accédant aux données de toutes
+            les administrations.
+          </h3>
         </div>
       </section>
 
@@ -71,8 +76,6 @@ function Home({ q, filter, apiList }) {
           </div>
         </div>
       </section>
-
-      <PreFooter />
 
       <style jsx>{`
         #mission-statement {
@@ -128,7 +131,7 @@ function Home({ q, filter, apiList }) {
       `}</style>
     </Page>
   );
-}
+};
 
 Home.getInitialProps = async req => {
   const { q, filter } = req.query;

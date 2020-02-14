@@ -6,9 +6,8 @@ import { throttle } from 'lodash';
 import { isElementVisible } from '../utils';
 import { getAPI, getService } from '../utils/api';
 import withErrors from '../components/hoc/with-errors';
-import Page from '../layouts/page';
+import Page from '../layouts';
 import globals from '../const';
-import ButtonLink from '../components/ui/button-link';
 
 import {
   PageHeader,
@@ -25,7 +24,6 @@ import {
 } from '../components/api';
 
 import { getWindowHash } from '../utils';
-import PreFooter from '../components/preFooter';
 import colors from '../styles/colors';
 
 const { publicRuntimeConfig } = getConfig();
@@ -134,7 +132,7 @@ const API = ({ api, services }) => {
   }, []);
 
   return (
-    <Page>
+    <Page preFooterBackground={colors.lightestGrey}>
       <PageHeader
         title={title}
         logo={logo || DEFAULT_LOGO}
@@ -198,7 +196,6 @@ const API = ({ api, services }) => {
           </div>
         </div>
       </div>
-      <PreFooter background={colors.lightestGrey} />
       <style jsx>{`
         .sticky-column {
           position: sticky;
