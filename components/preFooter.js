@@ -1,8 +1,7 @@
 import React from 'react';
 
 import constants from '../const';
-import colors from '../styles/colors';
-import ButtonLink from '../components/ui/button-link';
+import { ButtonLink } from '../uiComponents/button';
 
 const PreFooter = ({ background }) => (
   <section>

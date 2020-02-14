@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { throttle } from 'lodash';
 
-import ButtonLink from './ui/button-link';
+import { ButtonLink } from '../uiComponents/button';
 import constants from '../const';
 
 const Header = () => {
@@ -47,6 +47,9 @@ const Header = () => {
           <ul className="nav__links">
             <li id="signup-link" style={{ display: 'none' }}>
               <a href={constants.SIGNUP_LINK}>Mes demandes</a>
+            </li>
+            <li>
+              <a href="/apis-de-l-etat">Découvrir les APIs de l’État</a>
             </li>
             <li>
               <a href="/services">Voir les réalisations</a>

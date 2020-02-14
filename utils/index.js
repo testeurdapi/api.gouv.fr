@@ -17,3 +17,17 @@ export const getWindowHash = () => {
   }
   return window.location.hash.substr(1);
 };
+
+/**
+ * Generate random id
+ */
+export const randomId = (length = 10) => {
+  const characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  const charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+};
