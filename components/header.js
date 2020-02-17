@@ -4,8 +4,39 @@ import { throttle } from 'lodash';
 
 import { ButtonLink } from '../uiComponents/button';
 import constants from '../const';
+import colors from '../styles/colors';
 
-const Header = () => {
+export const HEADER_PAGE = {
+  APIS: 'apis',
+  REQUESTS: 'requests',
+  SERVICES: 'services',
+  ABOUT: 'about',
+  CONTACT: 'contact',
+};
+
+const HEADER = [
+  {
+    href: '/apis-de-l-etat',
+    txt: 'Découvrir les APIs de l’État',
+    key: HEADER_PAGE.APIS,
+  },
+  {
+    href: `${constants.SIGNUP_LINK}`,
+    txt: 'Mes demandes',
+    id: 'signup-link',
+    hide: true,
+    key: HEADER_PAGE.REQUESTS,
+  },
+  {
+    href: '/services',
+    txt: 'Voir les réalisations',
+    key: 'services',
+  },
+  { href: '/apropos', txt: 'À propos', key: 'about' },
+  { href: '/contact', txt: 'Nous contacter', key: 'contact', hide: true },
+];
+
+const Header = ({ headerKey = 'home' }) => {
   const header = useRef(null);
 
   const handleScroll = throttle(() => {
@@ -45,21 +76,18 @@ const Header = () => {
           </Link>
 
           <ul className="nav__links">
-            <li id="signup-link" style={{ display: 'none' }}>
-              <a href={constants.SIGNUP_LINK}>Mes demandes</a>
-            </li>
-            <li>
-              <a href="/apis-de-l-etat">Découvrir les APIs de l’État</a>
-            </li>
-            <li>
-              <a href="/services">Voir les réalisations</a>
-            </li>
-            <li>
-              <a href="/apropos">À propos</a>
-            </li>
-            <li>
-              <a href="/contact">Nous contacter</a>
-            </li>
+            {HEADER.map(item => (
+              <>
+                {!item.hide && (
+                  <li
+                    id={item.id || ''}
+                    className={`${headerKey === item.key ? 'current' : ''}`}
+                  >
+                    <a href={`${item.href}`}>{item.txt}</a>
+                  </li>
+                )}
+              </>
+            ))}
             <li className="external">
               <ButtonLink href={constants.REQUEST_API_MAILTO_LINK}>
                 Demander une API
@@ -75,10 +103,11 @@ const Header = () => {
           top: 0;
           z-index: 1000;
           width: 100%;
-          border-bottom: 1px solid #fff;
+          border-bottom: 1px solid #fafafa;
+          transition: border 300ms ease-in;
         }
         header.scrolled {
-          border-color: #efefef;
+          border-color: #e0e0e0;
         }
 
         header a {
@@ -103,28 +132,42 @@ const Header = () => {
         .nav__home,
         .nav__logo {
           height: 40px;
-          padding: 1em;
+          padding: 0 14px;
           box-sizing: content-box;
         }
 
         .nav__links {
           display: inline-flex;
           margin: 0;
-          padding: 0.5em 1em;
+          padding: 0em 1em;
           list-style-type: none;
           align-items: center;
           flex-flow: wrap;
         }
 
-        .nav__links li:not(.external) {
+        .nav__links > li:not(.external) {
+          position: relative;
           padding: 0;
-          display: inline;
-          margin: 0 0.2em;
-          line-height: 2em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0;
+          height: ${constants.HEADER_HEIGHT}px;
+        }
+
+        .nav__links li.current:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          margin: auto;
+          width: 68%;
+          height: 3px;
+          background-color: ${colors.blue};
         }
 
         .nav__links a {
-          padding: 0.4em 0.8em;
+          padding: 8px 10px;
+          margin: 0 5px;
           border-radius: 3px;
         }
 

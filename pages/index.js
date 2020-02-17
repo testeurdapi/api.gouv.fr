@@ -10,7 +10,7 @@ import Page from '../layouts/page';
 
 import ApiCard from '../components/searchApis/apiCard';
 
-import { TypingCarroussel } from '../uiComponents';
+import { TypingCarroussel, ButtonLink } from '../uiComponents';
 
 import colors from '../styles/colors';
 
@@ -34,6 +34,27 @@ const filterAPI = (list, filter) => {
   return filteredList;
 };
 
+const USE_CASES = [
+  {
+    title: 'La ville de Nantes',
+    content:
+      'La Ville de Nantes a mis à disposition de ses usagers un bouquet de e-services qui permettront aux familles nantaises de faire leur inscription administrative, de réserver les places en accueil de loisirs et séjours, ainsi que de régler leurs factures en ligne. Elle collecte les quotients familiaux et avis d’imposition afin de permettre le calcul de la tarification applicable à chaque famille.',
+    buttonTxt: 'Aidez-moi à simplifier un service administratif',
+  },
+  {
+    title: 'Les transports scolaires de la région Nouvelle-Aquitaine',
+    content:
+      'La région Nouvelle-Aquitaine propose une dégressivité du tarif des transports scolaires en fonction du revenu fiscal est nécessaire pour vous permettre de bénéficier éventuellement de la dégressivité du tarif. Un service en ligne permet aux familles de s’inscrire et de payer en ligne l’abonnement. Les familles n’ont pas produire de pièce justificative à l’appui de leur démarche.',
+    buttonTxt: 'Je veux simplifier les démarches des familles',
+  },
+  {
+    title: 'Le pass metz Loisirs',
+    content:
+      'Le Pass Metz Loisirs permet aux enfants de pratiquer une activité ( sportive, culturelle ou de loisirs) dans les structures conventionnées ou s’inscrire aux activités socio-éducatives après la classe et le mercredi après-midi. Il est subventionné par la ville pour les familles à faibles revenus sur la base du quotient familial. Les familles n’ont plus à fournir de justificatifs pour cette démarche.',
+    buttonTxt: 'Aidez-moi à dématérialiser des justificatifs',
+  },
+];
+
 const Home = ({ q, filter, apiList }) => {
   const filteredList = filterAPI(apiList, filter);
   return (
@@ -50,10 +71,10 @@ const Home = ({ q, filter, apiList }) => {
               ]}
             />
           </h1>
-          <h3>
+          <h2>
             Construisez des services innovants en accédant aux données de toutes
             les administrations.
-          </h3>
+          </h2>
         </div>
       </section>
 
@@ -61,11 +82,9 @@ const Home = ({ q, filter, apiList }) => {
         <div className="ui container">
           <div className="ui three stackable cards">
             {filteredList.length > 0 ? (
-              orderBy(
-                filteredList,
-                [api => api.visits_2019 || 0],
-                ['desc']
-              ).map(api => <ApiCard key={api.title} {...api} />)
+              orderBy(filteredList, [api => api.visits_2019 || 0], ['desc'])
+                .slice(0, 3)
+                .map(api => <ApiCard key={api.title} {...api} />)
             ) : (
               <div className="ui big warning message">
                 <div className="header">Aucune API n’a pu être trouvée</div>
@@ -75,6 +94,16 @@ const Home = ({ q, filter, apiList }) => {
           </div>
         </div>
       </section>
+      {USE_CASES.map(useCase => (
+        <section className="use-case ui container">
+          <div className="content-wrapper">
+            <h2>{useCase.title}</h2>
+            <div>{useCase.content}</div>
+            <a>{useCase.buttonTxt}</a>
+          </div>
+          <div className="img-wrapper">Img</div>
+        </section>
+      ))}
 
       <style jsx>{`
         #mission-statement {
@@ -106,6 +135,38 @@ const Home = ({ q, filter, apiList }) => {
 
         section#apis {
           background: ${colors.backgroundBlue};
+        }
+
+        section.use-case {
+          display: flex;
+          flex-direction: row;
+          width: 75%;
+          color: ${colors.darkestGrey};
+        }
+
+        section.use-case:nth-child(even) {
+          flex-direction: row-reverse;
+        }
+
+        section.use-case > .content-wrapper {
+          width: 550px;
+          font-size: 17px;
+          line-height: 28px;
+        }
+        section.use-case > .content-wrapper > div {
+          margin-bottom: 20px;
+        }
+        section.use-case > .content-wrapper > a {
+          font-size: 16px;
+          margin-top: 20px;
+          color: ${colors.blue};
+          cursor: pointer;
+        }
+
+        section.use-case > .img-wrapper {
+          margin: 0 25px;
+          width: calc(100% - 550px);
+          background: red;
         }
 
         .links {

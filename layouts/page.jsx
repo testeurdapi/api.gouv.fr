@@ -8,7 +8,7 @@ import PreFooter from '../components/preFooter';
 const Page = props => (
   <div id="page-layout">
     <Meta title={props.title} description={props.description} />
-    <Header />
+    <Header headerKey={props.headerKey || 'home'} />
     <main>{props.children}</main>
     <PreFooter background={props.preFooterBackground} />
     <Footer />

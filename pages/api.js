@@ -25,6 +25,7 @@ import {
 
 import { getWindowHash } from '../utils';
 import colors from '../styles/colors';
+import { HEADER_PAGE } from '../components/header';
 
 const { publicRuntimeConfig } = getConfig();
 const DEFAULT_LOGO = publicRuntimeConfig.DEFAULT_LOGO || 'logo-beta-gouv.svg';
@@ -132,7 +133,10 @@ const API = ({ api, services }) => {
   }, []);
 
   return (
-    <Page preFooterBackground={colors.lightestGrey}>
+    <Page
+      preFooterBackground={colors.lightestGrey}
+      headerKey={HEADER_PAGE.APIS}
+    >
       <PageHeader
         title={title}
         logo={logo || DEFAULT_LOGO}

@@ -4,10 +4,11 @@ import withErrors from '../components/hoc/with-errors';
 import { getAllAPIs } from '../utils/api';
 import Page from '../layouts/page';
 import SearchApis from '../components/searchApis';
+import { HEADER_PAGE } from '../components/header';
 
 const Home = ({ allApis }) => {
   return (
-    <Page>
+    <Page headerKey={HEADER_PAGE.APIS}>
       <section id="mission-statement" className="baseline">
         <h2>
           Vous recherchez une API du service public ? Vous êtes au bon endroit !
