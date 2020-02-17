@@ -5,7 +5,9 @@ import getConfig from 'next/config';
 
 import { Unlock, Lock } from 'react-feather';
 
-import { getUptimeState, roundUptime } from '../utils/uptime';
+import { getUptimeState, roundUptime } from '../../utils/uptime';
+
+import { textHighlighter } from './filtersLogic';
 
 const { publicRuntimeConfig } = getConfig();
 const DEFAULT_LOGO = publicRuntimeConfig.DEFAULT_LOGO || 'logo-beta-gouv.svg';
@@ -18,6 +20,7 @@ const ApiCard = ({
   image,
   owner,
   description,
+  matches = {},
 }) => {
   return (
     <>
@@ -30,14 +33,29 @@ const ApiCard = ({
               alt={image ? `logo de ${title}` : 'logo générique api.gouv'}
             />
 
-            <div className="header">{title}</div>
+            <div
+              className="header"
+              dangerouslySetInnerHTML={{
+                __html: textHighlighter(matches.title, title),
+              }}
+            />
 
-            <div className="description">{description}</div>
+            <div
+              className="description"
+              dangerouslySetInnerHTML={{
+                __html: textHighlighter(matches.description, description),
+              }}
+            />
           </div>
 
           <div className="card-extra">
             <div>
-              <b>{owner.includes('&') ? 'Cop' : 'P'}roduit par :</b> {owner}
+              <b>{owner.includes('&') ? 'Cop' : 'P'}roduit par :</b>{' '}
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: textHighlighter(matches.owner, owner),
+                }}
+              />
             </div>
           </div>
 
@@ -71,6 +89,15 @@ const ApiCard = ({
       <style jsx>{`
         a.api-card {
           text-decoration: none;
+        }
+
+        .yellow-highlight {
+          background-color: yellow;
+          color: blue !important;
+        }
+
+        .api-card img {
+          display: none;
         }
         .card-extra {
           padding: 0.5em 1em;

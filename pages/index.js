@@ -8,8 +8,7 @@ import { getAllAPIs } from '../utils/api';
 
 import Page from '../layouts/page';
 
-import ApiCard from '../components/api-card';
-import PreFooter from '../components/preFooter';
+import ApiCard from '../components/searchApis/apiCard';
 
 import { TypingCarroussel } from '../uiComponents';
 
