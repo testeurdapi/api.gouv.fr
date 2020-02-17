@@ -25,15 +25,15 @@ const TypingCarroussel = ({ typer }) => {
 };
 
 /**
- * Carroussel that need to get wrapped not to recreate the typer iterator at every refresh
+ * Carroussel needs to be wrapped not to recreate the typer iterator at every refresh
  */
-const CarrousselWrapper = ({ prefix, suffix, sentences }) => {
+const CarrousselWrapper = ({ txtBefore, txtAfter, sentences }) => {
   const typer = typerIterator(sentences);
   return (
     <>
-      {prefix}
+      {txtBefore}
       <TypingCarroussel typer={typer} />
-      {suffix}
+      {txtAfter}
     </>
   );
 };

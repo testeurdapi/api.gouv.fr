@@ -24,6 +24,11 @@ const getTime = typingDirection => {
   }
 };
 
+const textItem = (value, isEndOfSentence, direction) => {
+  const time = getTime(isEndOfSentence ? directions.STOPPED : direction);
+  return { value, time };
+};
+
 /**
  * Generates every texts to be displayed
  * @param {} array
@@ -32,31 +37,25 @@ const generateTextToType = sentences => {
   const text = [];
   let currText = '';
 
-  const generateTextItem = (txt, index, letterCount, direction) => {
-    const isLast = index === letterCount - 1;
-    const time = getTime(isLast ? directions.STOPPED : direction);
-    text.push({ value: txt, time });
-  };
-
   sentences.forEach(sentence => {
     const letterCount = sentence.length;
     // type in
     for (let i = 0; i < letterCount; i++) {
       currText = currText + sentence[i];
-      generateTextItem(currText, i, letterCount, directions.FORWARD);
+      text.push(textItem(currText, i === letterCount - 1, directions.FORWARD));
     }
 
     // deleting
     for (let i = 0; i < letterCount; i++) {
       currText = currText.substring(0, currText.length - 1);
-      generateTextItem(currText, i, letterCount, directions.BACKWARD);
+      text.push(textItem(currText, i === letterCount - 1, directions.BACKWARD));
     }
   });
   return text;
 };
 
 /**
- * Every time next() gets hit, it returns text to display and speed to use
+ * Every time next() gets hit, returns text to display and speed to use
  * @param array
  */
 const typerIterator = sentences => {

@@ -42,7 +42,7 @@ const Home = ({ q, filter, apiList }) => {
         <div className="header-with-image">
           <h1>
             <TypingCarroussel
-              prefix="Vous êtes "
+              txtBefore="Vous êtes "
               sentences={[
                 'une collectivité ?',
                 'un ministère ?',
