@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import lunr from 'lunr';
 
 import FilterHeader from './filterHeader';
 import Results from './results';
@@ -8,45 +7,24 @@ import {
   filterAccess,
   computeSearchResults,
 } from './filtersLogic';
-import { normaliseStr } from '../../utils';
 
-const useLunr = false;
-
-const SearchApis = ({ allApis }) => {
+const SearchApis = ({ allApis, allThemes }) => {
   const [apiList, setApiList] = useState(allApis);
 
   const [theme, setFilterTheme] = useState(null);
   const [access, setFilterAccess] = useState(false);
   const [searchTerms, setFilterSearch] = useState([]);
 
-  const idx = lunr(function() {
-    this.ref('id');
-    this.field('title');
-    this.field('owner');
-    this.field('description');
-
-    allApis.forEach((api, index) => {
-      this.add({
-        title: api.title,
-        owner: api.owner,
-        description: api.description,
-        id: index,
-      });
-    });
+  const allThemesOptions = allThemes.map((el, index) => {
+    return { value: index, label: el };
   });
 
   useEffect(() => {
     let res = allApis;
     if (searchTerms.length > 0) {
-      if (useLunr) {
-        res = idx
-          .search('*' + searchTerms[0] + '*')
-          .map(resApi => allApis[parseInt(resApi.ref, 0)]);
-      } else {
-        res = allApis
-          .map(computeSearchResults(searchTerms))
-          .filter(api => api.score !== 0);
-      }
+      res = allApis
+        .map(computeSearchResults(cleanedSearchTerms))
+        .filter(api => api.score !== 0);
     }
 
     const newApiList = res
@@ -58,23 +36,19 @@ const SearchApis = ({ allApis }) => {
     return () => {};
   }, [theme, access, searchTerms]);
 
-  const lunrOrCustomSearchTerms = search => {
-    if (useLunr === true) {
-      setFilterSearch([search.replace(' ', '*')]);
-    } else {
-      const cleanedSearchTerms = search.split(' ').filter(t => !!t);
-      setFilterSearch(cleanedSearchTerms);
-    }
+  const setSearchTerm = str => {
+    const cleanedSearchTerms = str.split(' ').filter(t => !!t);
+    setFilterSearch(cleanedSearchTerms);
   };
 
   return (
     <>
       <FilterHeader
-        setFilterTheme={setFilterTheme}
+        allThemesOptions={allThemesOptions}
+        setFilterTheme={idx => setFilterTheme(idx ? allThemes[idx] : null)}
         setFilterAccess={setFilterAccess}
-        setFilterSearch={lunrOrCustomSearchTerms}
+        setFilterSearch={setSearchTerm}
       />
-
       <Results apiList={apiList} />
     </>
   );

@@ -7,13 +7,14 @@ export const FilterHeader = ({
   setFilterSearch,
   setFilterTheme,
   setFilterAccess,
+  allThemesOptions,
 }) => (
   <section id="search-params">
     <div className="ui container">
       <Dropdown
-        label="Filtrer par thème"
+        label="Thématique"
         onChange={setFilterTheme}
-        selectOptions={[{ value: 1, label: 'première option' }]}
+        selectOptions={allThemesOptions}
       />
       <div className="habilitation-wrapper">
         <label>Habilitation</label>
@@ -27,7 +28,7 @@ export const FilterHeader = ({
       <SearchBar
         onSearch={setFilterSearch}
         placeholder="Recherchez un service, un ministère"
-        label="Rechercher une API"
+        label="Rechercher"
         width={450}
       />
     </div>

@@ -141,7 +141,7 @@ const ApiCard = ({
 ApiCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
-  contract: PropTypes.string.isRequired,
+  contract: PropTypes.string,
   image: PropTypes.string,
   owner: PropTypes.string,
   tagline: PropTypes.string,

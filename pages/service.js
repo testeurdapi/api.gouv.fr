@@ -10,7 +10,7 @@ import colors from '../styles/colors';
 
 import Page from '../layouts/page';
 
-import APICard from '../components/api-card';
+import APICard from '../components/searchApis/apiCard';
 import { HEADER_PAGE } from '../components/header';
 
 const Service = ({

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, Fragment } from 'react';
 import Link from 'next/link';
 import { throttle } from 'lodash';
 
@@ -77,7 +77,7 @@ const Header = ({ headerKey = 'home' }) => {
 
           <ul className="nav__links">
             {HEADER.map(item => (
-              <>
+              <Fragment key={item.href}>
                 {!item.hide && (
                   <li
                     id={item.id || ''}
@@ -86,7 +86,7 @@ const Header = ({ headerKey = 'home' }) => {
                     <a href={`${item.href}`}>{item.txt}</a>
                   </li>
                 )}
-              </>
+              </Fragment>
             ))}
             <li className="external">
               <ButtonLink href={constants.REQUEST_API_MAILTO_LINK}>

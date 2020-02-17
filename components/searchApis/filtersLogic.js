@@ -4,7 +4,7 @@ export const filterTheme = selectedTheme => {
   if (!selectedTheme) {
     return () => true;
   }
-  return api => api.theme === selectedTheme;
+  return api => api.themes.indexOf(selectedTheme) > -1;
 };
 
 export const filterAccess = filterAccessOnly => {

@@ -7,6 +7,15 @@ import SearchApis from '../components/searchApis';
 import { HEADER_PAGE } from '../components/header';
 
 const Home = ({ allApis }) => {
+  const allThemes = [
+    ...allApis.reduce((themeSet, api) => {
+      if (api.themes) {
+        api.themes.forEach(theme => themeSet.add(theme));
+      }
+      return themeSet;
+    }, new Set()),
+  ].sort();
+
   return (
     <Page headerKey={HEADER_PAGE.APIS}>
       <section id="mission-statement" className="baseline">
@@ -15,7 +24,7 @@ const Home = ({ allApis }) => {
         </h2>
       </section>
 
-      <SearchApis allApis={allApis} />
+      <SearchApis allApis={allApis} allThemes={allThemes} />
 
       <style jsx>{`
         #mission-statement {

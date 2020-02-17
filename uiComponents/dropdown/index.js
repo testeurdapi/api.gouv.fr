@@ -12,11 +12,10 @@ const Dropdown = ({
   placeholder,
   width = 250,
 }) => {
-  const [selected, setSelected] = useState(true);
-
-  const onSelect = index => {
-    setSelected(index);
-    onChange(index);
+  const onSelect = event => {
+    try {
+      onChange(parseInt(event.target.value, 10));
+    } catch {}
   };
 
   return (
@@ -28,11 +27,7 @@ const Dropdown = ({
             {placeholder || 'Veuillez selectionner une option'}
           </option>
           {selectOptions.map((selectOption, index) => (
-            <option
-              key={selectOption.value}
-              className={selected ? 'selected' : ''}
-              value={selectOption.value}
-            >
+            <option key={selectOption.value} value={selectOption.value}>
               {selectOption.label}
             </option>
           ))}
