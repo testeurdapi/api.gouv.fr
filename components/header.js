@@ -128,6 +128,10 @@ const Header = ({ headerKey = 'home' }) => {
           align-items: center;
           height: ${constants.HEADER_HEIGHT}px;
         }
+        .nav__container > a:first-child {
+          display: flex;
+          align-items: center;
+        }
 
         .nav__home,
         .nav__logo {

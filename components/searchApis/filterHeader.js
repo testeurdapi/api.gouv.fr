@@ -10,12 +10,6 @@ export const FilterHeader = ({
 }) => (
   <section id="search-params">
     <div className="ui container">
-      <SearchBar
-        onSearch={setFilterSearch}
-        placeholder="Recherchez un nom d’API, un service, un ministère"
-        label="Rechercher une API"
-        width={500}
-      />
       <Dropdown
         label="Filtrer par thème"
         onChange={setFilterTheme}
@@ -30,6 +24,12 @@ export const FilterHeader = ({
           />
         </div>
       </div>
+      <SearchBar
+        onSearch={setFilterSearch}
+        placeholder="Recherchez un service, un ministère"
+        label="Rechercher une API"
+        width={450}
+      />
     </div>
 
     <style jsx>{`
