@@ -74,6 +74,7 @@ const SearchApis = ({ allApis }) => {
         setFilterAccess={setFilterAccess}
         setFilterSearch={lunrOrCustomSearchTerms}
       />
+
       <Results apiList={apiList} />
     </>
   );

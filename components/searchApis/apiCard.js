@@ -89,11 +89,13 @@ const ApiCard = ({
       <style jsx>{`
         a.api-card {
           text-decoration: none;
+          transition: transform 200ms ease-in-out !important,
+            box-shadow 200ms ease-in-out !important;
         }
 
-        .yellow-highlight {
-          background-color: yellow;
-          color: blue !important;
+        a.api-card:hover {
+          transform: translateY(-8px) !important;
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2) !important;
         }
 
         .api-card img {

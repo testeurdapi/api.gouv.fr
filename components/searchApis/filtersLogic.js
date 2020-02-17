@@ -11,7 +11,7 @@ export const filterAccess = filterAccessOnly => {
   if (!filterAccessOnly) {
     return () => true;
   }
-  return api => api.contract === 'OUVERT';
+  return api => api.contract !== 'OUVERT';
 };
 
 const mergeResults = (previousMatches, currMatch) => {

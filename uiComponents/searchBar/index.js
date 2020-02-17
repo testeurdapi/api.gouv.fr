@@ -1,7 +1,16 @@
 import React, { useRef } from 'react';
 import { debounce } from 'lodash';
 
-const SearchBar = ({ onSearch, placeholder, debounceRate = 100 }) => {
+import { Search } from 'react-feather';
+import colors from '../../styles/colors';
+
+const SearchBar = ({
+  onSearch,
+  placeholder,
+  label,
+  debounceRate = 100,
+  width = 400,
+}) => {
   const searchInput = useRef(null);
   const onChange = debounce(() => {
     if (!searchInput || !searchInput.current) {
@@ -12,13 +21,59 @@ const SearchBar = ({ onSearch, placeholder, debounceRate = 100 }) => {
 
   return (
     <>
-      <input
-        placeholder={placeholder}
-        onChange={onChange}
-        type="text"
-        ref={searchInput}
-      />
-      <button onClick={onChange}>🔍</button>
+      <div className="search-wrapper">
+        {label && <label>{label}</label>}
+        <div className="search-bar">
+          <input
+            placeholder={placeholder}
+            onChange={onChange}
+            type="text"
+            ref={searchInput}
+          />
+          <button onClick={onChange}>
+            <Search size={20} color={colors.blue} />
+          </button>
+        </div>
+      </div>
+      <style jsx>{`
+        .search-wrapper {
+          width: ${width}px;
+        }
+        label {
+          line-height: 18px;
+          font-weight: 600;
+          color: ${colors.darkestGrey};
+          font-size: 0.9rem;
+        }
+        .search-bar {
+          font-size: 1.1rem;
+
+          width: 100%;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          display: flex;
+          padding: 0;
+        }
+
+        input[type='text'] {
+          line-height: 38px;
+          padding: 0 10px;
+          border: none;
+          background: none;
+          flex-grow: 1;
+        }
+
+        button {
+          border: none;
+          background: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        button:hover {
+          background-color: #eee;
+        }
+      `}</style>
     </>
   );
 };

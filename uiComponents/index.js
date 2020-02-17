@@ -3,5 +3,6 @@ import { ButtonLink } from './button';
 import Toggle from './toggle';
 import SearchBar from './searchBar';
 import Dropdown from './dropdown';
+import Icon from './icon';
 
-export { TypingCarroussel, ButtonLink, Toggle, Dropdown, SearchBar };
+export { TypingCarroussel, ButtonLink, Toggle, Dropdown, SearchBar, Icon };

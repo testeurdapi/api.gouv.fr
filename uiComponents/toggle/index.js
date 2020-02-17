@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
+import colors from '../../styles/colors';
+
 const Toggle = ({ onChange, label }) => {
-  const [isToggled, setIsToggle] = useState(true);
+  const [isToggled, setIsToggle] = useState(false);
 
   const onClick = () => {
     const newState = !isToggled;
@@ -11,10 +13,15 @@ const Toggle = ({ onChange, label }) => {
 
   return (
     <>
-      <div className="wrapper" onClick={onClick}>
+      <div className="wrapper">
         <div className="switch">
-          <input type="checkbox" id="checkbox" />
-          <span className="slider"></span>
+          <input
+            type="checkbox"
+            id="checkbox"
+            checked={isToggled}
+            onChange={onClick}
+          />
+          <span className="slider" onClick={onClick}></span>
         </div>
         <label htmlFor="checkbox">{label}</label>
       </div>
@@ -23,6 +30,7 @@ const Toggle = ({ onChange, label }) => {
           .wrapper {
             cursor: pointer;
           }
+
           /* The switch - the box around the slider */
           .switch {
             position: relative;
@@ -66,7 +74,7 @@ const Toggle = ({ onChange, label }) => {
           }
 
           input:checked + .slider {
-            background-color: #2196f3;
+            background-color: ${colors.blue};
             border-color: transparent;
           }
 
@@ -75,13 +83,18 @@ const Toggle = ({ onChange, label }) => {
           }
 
           input:focus + .slider {
-            box-shadow: 0 0 1px #2196f3;
+            box-shadow: 0 0 1px ${colors.blue};
           }
 
           input:checked + .slider:before {
             -webkit-transform: translateX(14px);
             -ms-transform: translateX(14px);
             transform: translateX(14px);
+          }
+
+          label {
+            margin-left: 5px;
+            cursor: pointer;
           }
         `}
       </style>
