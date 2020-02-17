@@ -23,7 +23,7 @@ const SearchApis = ({ allApis, allThemes }) => {
     let res = allApis;
     if (searchTerms.length > 0) {
       res = allApis
-        .map(computeSearchResults(cleanedSearchTerms))
+        .map(computeSearchResults(searchTerms))
         .filter(api => api.score !== 0);
     }
 
