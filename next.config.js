@@ -1,5 +1,9 @@
 const nextRuntimeDotenv = require('next-runtime-dotenv');
 
+const withFonts = require('nextjs-fonts');
+
+const withSass = require('@zeit/next-sass');
+
 const withConfig = nextRuntimeDotenv({
   public: [
     'SITE_NAME',
@@ -12,4 +16,12 @@ const withConfig = nextRuntimeDotenv({
   ],
 });
 
-module.exports = withConfig();
+module.exports = withConfig(
+  withSass(
+    withFonts({
+      webpack(config, options) {
+        return config;
+      },
+    })
+  )
+);
