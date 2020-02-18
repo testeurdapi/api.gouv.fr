@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "node server.js",
     "start": "NODE_ENV=production node server.js",
-    "build": "next build",
-    "lint": "pretty-quick"
+    "build": "next build"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.1.1",
@@ -17,7 +16,6 @@
     "front-matter": "^3.0.2",
     "lunr": "^2.3.8",
     "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1",
     "typescript": "^3.7.5"
   },
   "dependencies": {

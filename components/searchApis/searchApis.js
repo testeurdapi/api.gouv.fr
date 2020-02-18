@@ -37,15 +37,24 @@ const SearchApis = ({ allApis, allThemes }) => {
   }, [theme, access, searchTerms]);
 
   const setSearchTerm = str => {
+    // split by search keywords and remove trailing spaces
     const cleanedSearchTerms = str.split(' ').filter(t => !!t);
     setFilterSearch(cleanedSearchTerms);
+  };
+
+  const setThemes = themeIdx => {
+    if (!themeIdx) {
+      // no theme selected
+      setFilterTheme(null);
+    }
+    setFilterTheme(allThemes[idx]);
   };
 
   return (
     <>
       <FilterHeader
         allThemesOptions={allThemesOptions}
-        setFilterTheme={idx => setFilterTheme(idx ? allThemes[idx] : null)}
+        setFilterTheme={setThemes}
         setFilterAccess={setFilterAccess}
         setFilterSearch={setSearchTerm}
       />
