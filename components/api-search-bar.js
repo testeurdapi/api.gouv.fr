@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import lunr from "lunr";
-import Router from "next/router";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import lunr from 'lunr';
+import Router from 'next/router';
 
-import { useInput } from "../hooks/input";
+import { useInput } from '../hooks/input';
 
-import { normaliseStr } from "../utils/normalize";
-import SearchResult from "./search-result";
+import { normaliseStr } from '../utils/normalize';
+import SearchResult from './search-result';
 
 const RESULTS_LIMIT = 7;
 const SEARCH_FIELDS = [
-  { name: "title", boost: 5 },
-  { name: "description", boost: 1 },
-  { name: "keywords", boost: 1 },
-  { name: "partners", boost: 1 }
+  { name: 'title', boost: 5 },
+  { name: 'description', boost: 1 },
+  { name: 'keywords', boost: 1 },
+  { name: 'partners', boost: 1 },
 ];
 const SEARCH_EXAMPLES = [
-  "quotient familial",
-  "revenu fiscal de référence",
-  "cadastre",
-  "…"
+  'quotient familial',
+  'revenu fiscal de référence',
+  'cadastre',
+  '…',
 ];
 
 const normalise = builder => {
@@ -29,7 +29,7 @@ const normalise = builder => {
   };
 
   // Register the pipeline function so the index can be serialised
-  lunr.Pipeline.registerFunction(pipelineFunction, "normalise");
+  lunr.Pipeline.registerFunction(pipelineFunction, 'normalise');
 
   // Add the pipeline function to both the indexing pipeline and the
   // searching pipeline
@@ -60,7 +60,7 @@ const APISearchBar = ({ q, list }) => {
   useEffect(() => {
     if (list && list.length > 0) {
       const idx = lunr(function() {
-        this.ref("url");
+        this.ref('url');
         SEARCH_FIELDS.map(field =>
           this.field(field.name, { boost: field.boost })
         );
@@ -77,7 +77,7 @@ const APISearchBar = ({ q, list }) => {
 
   useEffect(() => {
     if (input && idx) {
-      const normalise = normaliseStr(input).replace(/:/g, ""); // Remove ":" to avoid lurn fields search
+      const normalise = normaliseStr(input).replace(/:/g, ''); // Remove ":" to avoid lurn fields search
       const lunrResults = idx.search(`${normalise}* ${normalise}`);
 
       const results = lunrResults
@@ -96,7 +96,7 @@ const APISearchBar = ({ q, list }) => {
           <input
             value={input}
             className="prompt"
-            placeholder={SEARCH_EXAMPLES.join(", ")}
+            placeholder={SEARCH_EXAMPLES.join(', ')}
             type="search"
             onKeyDown={handleKeyDown}
             onChange={setInput}
@@ -106,7 +106,7 @@ const APISearchBar = ({ q, list }) => {
 
         <div
           className={`results transition ${
-            input.length > 0 ? "visible" : "hidden"
+            input.length > 0 ? 'visible' : 'hidden'
           }`}
         >
           {input.length > 0 && results.length === 0 && (
@@ -157,7 +157,7 @@ const APISearchBar = ({ q, list }) => {
 
 APISearchBar.propTypes = {
   q: PropTypes.string,
-  list: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired,
 };
 
 export default APISearchBar;

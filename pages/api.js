@@ -102,19 +102,6 @@ const API = ({ api, services }) => {
     anchorElem.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
   };
 
-  const handleScroll = throttle(() => {
-    const currentVisibleAnchor = getVisibleAnchor();
-    if (currentVisibleAnchor !== getWindowHash()) {
-      setMenuItem(currentVisibleAnchor);
-      window.history.replaceState(
-        undefined,
-        undefined,
-        `#${currentVisibleAnchor}`
-      );
-    }
-    // approx 8 frames
-  }, 16 * 8);
-
   useEffect(() => {
     // scroll if any anchor in url - only applies on refresh
     const hash = getWindowHash();
@@ -122,6 +109,19 @@ const API = ({ api, services }) => {
     if (hash) {
       setVisibleAnchor(hash, true);
     }
+
+    const handleScroll = throttle(() => {
+      const currentVisibleAnchor = getVisibleAnchor();
+      if (currentVisibleAnchor !== getWindowHash()) {
+        setMenuItem(currentVisibleAnchor);
+        window.history.replaceState(
+          undefined,
+          undefined,
+          `#${currentVisibleAnchor}`
+        );
+      }
+      // approx 8 frames
+    }, 16 * 8);
 
     // add scrollListeners
     window.addEventListener('scroll', handleScroll);

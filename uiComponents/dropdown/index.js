@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import colors from '../../styles/colors';
 import { randomId } from '../../utils';
@@ -22,7 +22,7 @@ const Dropdown = ({
     <>
       <div className="dropdown-wrapper">
         <label htmlFor={selectId}>{label}</label>
-        <select id={selectId} onChange={onSelect}>
+        <select id={selectId} onBlur={onSelect}>
           <option value={null}>
             {placeholder || 'Veuillez selectionner une option'}
           </option>

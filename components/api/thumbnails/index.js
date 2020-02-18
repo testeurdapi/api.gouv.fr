@@ -1,8 +1,9 @@
-import Thumbnail from "./thumbnail";
+import React from 'react';
+import Thumbnail from './thumbnail';
 
-import { Lock, Unlock, Activity, Calendar, User, Sliders } from "react-feather";
+import { Lock, Unlock, Activity, Calendar, User, Sliders } from 'react-feather';
 
-import { getUptimeState, roundUptime } from "../../../utils/uptime";
+import { getUptimeState, roundUptime } from '../../../utils/uptime';
 
 const Thumbnails = ({ is_open, uptime, lastUpdate, owner, rate_limiting }) => {
   return (
@@ -33,7 +34,7 @@ const Thumbnails = ({ is_open, uptime, lastUpdate, owner, rate_limiting }) => {
       {rate_limiting && (
         <Thumbnail title="Limite d’usage" icon={<Sliders />}>
           <div>
-            {rate_limiting.split("/").map(rate => (
+            {rate_limiting.split('/').map(rate => (
               <div className="rate" key={rate}>
                 {rate}
               </div>
@@ -65,7 +66,7 @@ const Thumbnails = ({ is_open, uptime, lastUpdate, owner, rate_limiting }) => {
         }
 
         .rate:not(:first-child):before {
-          content: "/ ";
+          content: '/ ';
         }
 
         @media (max-width: 445px) {

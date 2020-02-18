@@ -5,16 +5,16 @@ const TypingCarroussel = ({ typer }) => {
   const [text, setText] = useState('');
   const componentIsMounted = useRef(true);
 
-  const infiniteType = () => {
-    const textToType = typer.next();
-    setText(() => textToType.value + '|');
-
-    if (componentIsMounted.current) {
-      window.setTimeout(infiniteType, textToType.time);
-    }
-  };
-
   useEffect(() => {
+    const infiniteType = () => {
+      const textToType = typer.next();
+      setText(() => textToType.value + '|');
+
+      if (componentIsMounted.current) {
+        window.setTimeout(infiniteType, textToType.time);
+      }
+    };
+
     infiniteType();
     return () => {
       componentIsMounted.current = false;

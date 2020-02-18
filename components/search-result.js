@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 const SearchResult = ({ api, isSelected, handleHover }) => {
   return (
@@ -8,7 +8,7 @@ const SearchResult = ({ api, isSelected, handleHover }) => {
       <a
         onMouseEnter={handleHover}
         style={{
-          backgroundColor: isSelected ? "whitesmoke" : "white"
+          backgroundColor: isSelected ? 'whitesmoke' : 'white',
         }}
         className="result"
       >
@@ -43,7 +43,7 @@ const SearchResult = ({ api, isSelected, handleHover }) => {
 };
 
 SearchResult.protoTypes = {
-  isSelected: false
+  isSelected: false,
 };
 
 SearchResult.protoTypes = {
@@ -53,10 +53,10 @@ SearchResult.protoTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     keywords: PropTypes.array.isRequired,
-    partners: PropTypes.array.isRequired
+    partners: PropTypes.array.isRequired,
   }).isRequired,
   isSelected: PropTypes.bool,
-  handleHover: PropTypes.func.isRequired
+  handleHover: PropTypes.func.isRequired,
 };
 
 export default SearchResult;

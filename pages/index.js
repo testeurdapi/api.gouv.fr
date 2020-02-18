@@ -10,7 +10,7 @@ import Page from '../layouts/page';
 
 import ApiCard from '../components/searchApis/apiCard';
 
-import { TypingCarroussel, ButtonLink } from '../uiComponents';
+import { TypingCarroussel } from '../uiComponents';
 
 import colors from '../styles/colors';
 
