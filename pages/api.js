@@ -152,7 +152,7 @@ const API = ({ api, services }) => {
         rate_limiting={rate_limiting_resume}
       />
 
-      <div id="description" className="ui container">
+      <div id="description" className="content-container">
         <div className="ui equal width grid padded">
           <div className="four wide column computer only">
             <div className=" sticky-column">

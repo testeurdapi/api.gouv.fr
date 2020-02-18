@@ -7,7 +7,7 @@ const TypingCarroussel = ({ typer }) => {
 
   const infiniteType = () => {
     const textToType = typer.next();
-    setText(() => textToType.value + '|');
+    setText(() => textToType.value);
 
     if (componentIsMounted.current) {
       window.setTimeout(infiniteType, textToType.time);
@@ -21,7 +21,23 @@ const TypingCarroussel = ({ typer }) => {
     };
   }, []);
 
-  return <>{text}</>;
+  return (
+    <>
+      {text}
+      <span className="blink">|</span>
+      <style jsx>{`
+        .blink {
+          animation: blinker 1000ms linear infinite;
+        }
+
+        @keyframes blinker {
+          50% {
+            opacity: 0;
+          }
+        }
+      `}</style>
+    </>
+  );
 };
 
 /**

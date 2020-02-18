@@ -6,8 +6,8 @@ import colors from '../../styles/colors';
 const Results = ({ apiList }) => {
   return (
     <>
-      <section id="apis">
-        <div className="ui container">
+      <section id="api-results">
+        <div className="content-container">
           <div className="results-counter">
             {apiList.length} résultat{apiList.length > 1 && 's'}
           </div>
@@ -26,13 +26,13 @@ const Results = ({ apiList }) => {
       <style jsx>
         {`
           section {
-            padding: 4em 0;
+            padding: 35px 0 60px;
           }
-          section#apis {
+          section#api-results {
             background: ${colors.lightGrey};
           }
           .results-counter {
-            margin: 0 0 1rem;
+            margin: 0 0 15px;
           }
         `}
       </style>

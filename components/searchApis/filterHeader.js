@@ -10,7 +10,7 @@ export const FilterHeader = ({
   allThemesOptions,
 }) => (
   <section id="search-params">
-    <div className="ui container">
+    <div className="content-container">
       <Dropdown
         label="Thématique"
         onChange={setFilterTheme}

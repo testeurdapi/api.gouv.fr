@@ -89,6 +89,7 @@ const ApiCard = ({
       <style jsx>{`
         a.api-card {
           text-decoration: none;
+          box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1) !important;
           transition: transform 200ms ease-in-out !important,
             box-shadow 200ms ease-in-out !important;
         }

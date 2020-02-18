@@ -5,7 +5,7 @@ import { ButtonLink } from '../uiComponents/button';
 
 const PreFooter = ({ background }) => (
   <section>
-    <div className="ui container links">
+    <div className="content-container links">
       <div>
         <h3>Vous ne trouvez pas l’API dont vous avez besoin ?</h3>
         <ButtonLink href={constants.REQUEST_API_MAILTO_LINK}>

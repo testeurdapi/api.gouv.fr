@@ -6,6 +6,7 @@ import Footer from '../components/footer';
 import PreFooter from '../components/preFooter';
 import constants from '../const/index';
 import '../styles/fonts.scss';
+import './layout.scss';
 
 const Page = props => (
   <div id="page-layout">

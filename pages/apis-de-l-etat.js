@@ -18,7 +18,7 @@ const Home = ({ allApis }) => {
 
   return (
     <Page headerKey={HEADER_PAGE.APIS}>
-      <section id="mission-statement" className="baseline">
+      <section id="mission-statement">
         <h2>
           Vous recherchez une API du service public ? Vous êtes au bon endroit !
         </h2>
@@ -28,20 +28,7 @@ const Home = ({ allApis }) => {
 
       <style jsx>{`
         #mission-statement {
-          margin: 2em 0;
-        }
-
-        .baseline h2 {
-          margin: auto;
-          margin-bottom: 1.5em;
-          max-width: 480px;
-          text-align: center;
-        }
-
-        .links {
-          display: flex;
-          justify-content: space-between;
-          flex-flow: wrap;
+          margin: 0;
         }
 
         @media (max-width: 768px) {

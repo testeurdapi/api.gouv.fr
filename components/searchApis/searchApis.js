@@ -47,7 +47,7 @@ const SearchApis = ({ allApis, allThemes }) => {
       // no theme selected
       setFilterTheme(null);
     }
-    setFilterTheme(allThemes[idx]);
+    setFilterTheme(allThemes[themeIdx]);
   };
 
   return (

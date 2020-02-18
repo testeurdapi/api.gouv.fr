@@ -40,7 +40,7 @@ const Service = ({
         </div>
       </section>
 
-      <div className="ui container content">
+      <div className="content-container content">
         <div className="ui stackable grid">
           <div className="row">
             <div className="five wide column">

@@ -65,7 +65,7 @@ const PageHeader = ({ title, logo, tagline }) => (
     <Link href="/">
       <a className="back-button">← Page d’accueil</a>
     </Link>
-    <div className="ui container content">
+    <div className="content-container content">
       <Title title={title} logo={logo} />
       <Tagline tagline={tagline} />
     </div>

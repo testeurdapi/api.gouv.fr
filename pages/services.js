@@ -13,7 +13,7 @@ import { HEADER_PAGE } from '../components/header';
 const Services = ({ services }) => {
   return (
     <Page headerKey={HEADER_PAGE.SERVICES}>
-      <section id="services" className="ui container main">
+      <section id="services" className="content-container main">
         <h2 className="ui divider horizontal">Tous les services</h2>
         <div className="ui three stackable cards">
           {services.map(service => (
