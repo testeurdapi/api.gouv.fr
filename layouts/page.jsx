@@ -4,6 +4,8 @@ import Meta from '../components/meta';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import PreFooter from '../components/preFooter';
+import constants from '../const/index';
+import '../styles/fonts.scss';
 
 const Page = props => (
   <div id="page-layout">
@@ -24,7 +26,7 @@ const Page = props => (
 
       #page-layout > main {
         flex: 1;
-        margin-top: 75px;
+        margin-top: ${constants.HEADER_HEIGHT}px;
       }
 
       a {

@@ -28,7 +28,6 @@ const Title = ({ title, logo }) => (
       }
 
       .title h1 {
-        font-family: Evolventa;
         margin: 0 0.5rem;
         font-style: normal;
         font-weight: bold;
@@ -42,15 +41,15 @@ const Title = ({ title, logo }) => (
 
 const Tagline = ({ tagline }) => (
   <>
-    <div className="tagline">{tagline}</div>
+    <h2 className="tagline">{tagline}</h2>
     <style jsx>{`
       .tagline {
-        font-family: Evolventa;
         font-style: normal;
         font-weight: bold;
         font-size: 15px;
         line-height: 20px;
         text-align: center;
+        margin: 0;
       }
 
       .inline {

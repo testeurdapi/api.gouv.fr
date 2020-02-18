@@ -48,7 +48,7 @@ const USE_CASES = [
       'La région Nouvelle-Aquitaine propose une dégressivité du tarif des transports scolaires en fonction du revenu fiscal est nécessaire pour vous permettre de bénéficier éventuellement de la dégressivité du tarif. Un service en ligne permet aux familles de s’inscrire et de payer en ligne l’abonnement. Les familles n’ont pas produire de pièce justificative à l’appui de leur démarche.',
     apis: [],
 
-    buttonTxt: 'Je veux simplifier les démarches des familles',
+    buttonTxt: 'Je cherche à faciliter les démarches des familles',
   },
   {
     title: 'Le pass metz Loisirs',
@@ -68,11 +68,11 @@ const Home = ({ q, filter, apiList }) => {
         <div className="header-with-image">
           <h1>
             <TypingCarroussel
-              txtBefore="Vous êtes "
+              txtBefore="Vous êtes"
               sentences={[
-                'une collectivité ?',
-                'un ministère ?',
-                'un éditeur ?',
+                ' une collectivité ?',
+                ' un ministère ?',
+                ' un éditeur ?',
               ]}
             />
           </h1>

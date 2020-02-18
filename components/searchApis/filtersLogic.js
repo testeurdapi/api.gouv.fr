@@ -41,7 +41,7 @@ export const computeSearchResults = searchTerms => {
     .map(normalize)
     .map(str => str.toLowerCase())
     .map(term => findAll(term))
-    .map(func => text => func((text || '').toLowerCase()));
+    .map(func => text => func(normalize(text || '').toLowerCase()));
 
   return api => {
     const matches = finders.reduce(

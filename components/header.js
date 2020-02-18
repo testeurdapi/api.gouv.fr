@@ -103,11 +103,11 @@ const Header = ({ headerKey = 'home' }) => {
           top: 0;
           z-index: 1000;
           width: 100%;
-          border-bottom: 1px solid #fafafa;
-          transition: border 300ms ease-in;
+          box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.2);
+          transition: box-shadow 300ms ease-in;
         }
         header.scrolled {
-          border-color: #e0e0e0;
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
         }
 
         header a {
@@ -159,14 +159,25 @@ const Header = ({ headerKey = 'home' }) => {
           height: ${constants.HEADER_HEIGHT}px;
         }
 
-        .nav__links li.current:after {
+        .nav__links li:after {
           content: '';
           position: absolute;
           bottom: 0;
           margin: auto;
-          width: 68%;
+          width: 0%;
           height: 3px;
           background-color: ${colors.blue};
+          transition: width 200ms ease-in-out, opacity 200ms ease-in-out;
+          opacity: 0;
+        }
+        .nav__links li.current:after {
+          width: 58%;
+          opacity: 1;
+        }
+        .nav__links li:not(.current):not(.external):hover:after,
+        .nav__links li:not(.current):not(.external):focus:after {
+          width: 58%;
+          opacity: 1;
         }
 
         .nav__links a {
@@ -177,11 +188,6 @@ const Header = ({ headerKey = 'home' }) => {
 
         .nav__links a:after {
           content: none;
-        }
-
-        .nav__links a:hover,
-        .nav__links a:focus {
-          background: #f0f0f0;
         }
 
         .side-nav,

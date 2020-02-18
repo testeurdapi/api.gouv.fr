@@ -1,9 +1,9 @@
-import React from "react";
-import Document, { Head, Main, NextScript } from "next/document";
-import getConfig from "next/config";
+import React from 'react';
+import Document, { Head, Main, NextScript } from 'next/document';
+import getConfig from 'next/config';
 
 const {
-  publicRuntimeConfig: { PIWIK_URL, PIWIK_SITE_ID }
+  publicRuntimeConfig: { PIWIK_URL, PIWIK_SITE_ID },
 } = getConfig();
 
 class MyDocument extends Document {
@@ -181,7 +181,7 @@ class MyDocument extends Document {
             html {
               height: 100%;
             }
-
+            
             body {
               height: 100%;
               margin: 0;
