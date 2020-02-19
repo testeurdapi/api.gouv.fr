@@ -40,7 +40,8 @@ const SearchBar = ({
       </div>
       <style jsx>{`
         .search-wrapper {
-          width: ${width}px;
+          max-width: ${width}px;
+          width: 100%;
         }
         label {
           line-height: 18px;
@@ -68,6 +69,9 @@ const SearchBar = ({
           border: none;
           background: none;
           flex-grow: 1;
+        }
+        input[type='text']:focus {
+          outline: none;
         }
 
         button {

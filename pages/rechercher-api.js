@@ -6,7 +6,7 @@ import Page from '../layouts/page';
 import SearchApis from '../components/searchApis';
 import { HEADER_PAGE } from '../components/header';
 
-const Home = ({ allApis }) => {
+const RechercherApi = ({ allApis }) => {
   const allThemes = [
     ...allApis.reduce((themeSet, api) => {
       if (api.themes) {
@@ -18,7 +18,7 @@ const Home = ({ allApis }) => {
 
   return (
     <Page headerKey={HEADER_PAGE.APIS}>
-      <section id="mission-statement">
+      <section id="rechercher-api-baseline" className="content-container">
         <h2>
           Vous recherchez une API du service public ? Vous êtes au bon endroit !
         </h2>
@@ -27,29 +27,16 @@ const Home = ({ allApis }) => {
       <SearchApis allApis={allApis} allThemes={allThemes} />
 
       <style jsx>{`
-        #mission-statement {
-          margin: 0;
-        }
-
-        @media (max-width: 768px) {
-          #mission-statement {
-            padding: 4em 2em;
-          }
-
-          .header-with-image img {
-            width: 250px;
-          }
-
-          .links > div:first-child {
-            margin-bottom: 2em;
-          }
+        #rechercher-api-baseline {
+          margin: 30px 0;
+          text-align: left;
         }
       `}</style>
     </Page>
   );
 };
 
-Home.getInitialProps = async req => {
+RechercherApi.getInitialProps = async req => {
   const { q, filter } = req.query;
   const allApis = await getAllAPIs();
 
@@ -60,4 +47,4 @@ Home.getInitialProps = async req => {
   };
 };
 
-export default withErrors(Home);
+export default withErrors(RechercherApi);

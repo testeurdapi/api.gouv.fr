@@ -53,6 +53,11 @@ const Dropdown = ({
           display: flex;
           padding: 0;
         }
+
+        select:focus {
+          outline: none;
+          border-color: ${colors.blue};
+        }
       `}</style>
     </>
   );

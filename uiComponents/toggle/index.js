@@ -29,10 +29,12 @@ const Toggle = ({ onChange, label }) => {
         {`
           .wrapper {
             cursor: pointer;
+            display: flex;
           }
 
           /* The switch - the box around the slider */
           .switch {
+            flex-shrink: 0;
             position: relative;
             display: inline-block;
             width: 35px;

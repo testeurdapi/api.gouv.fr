@@ -16,7 +16,7 @@ export const HEADER_PAGE = {
 
 const HEADER = [
   {
-    href: '/apis-de-l-etat',
+    href: '/rechercher-api',
     txt: 'Découvrir les APIs de l’État',
     key: HEADER_PAGE.APIS,
   },
@@ -174,10 +174,12 @@ const Header = ({ headerKey = 'home' }) => {
           width: 58%;
           opacity: 1;
         }
-        .nav__links li:not(.current):not(.external):hover:after,
-        .nav__links li:not(.current):not(.external):focus:after {
+        .nav__links li:not(.current):not(.external):hover:after {
           width: 58%;
           opacity: 1;
+        }
+        .nav__links li:not(.external) > a:focus {
+          text-decoration: underline;
         }
 
         .nav__links a {
