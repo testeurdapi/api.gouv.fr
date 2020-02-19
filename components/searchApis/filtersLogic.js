@@ -7,11 +7,11 @@ export const filterTheme = selectedTheme => {
   return api => api.themes.indexOf(selectedTheme) > -1;
 };
 
-export const filterAccess = filterAccessOnly => {
-  if (!filterAccessOnly) {
+export const filterAccess = noAccessRight => {
+  if (!noAccessRight) {
     return () => true;
   }
-  return api => api.contract !== 'OUVERT';
+  return api => api.contract === 'OUVERT';
 };
 
 const mergeResults = (previousMatches, currMatch) => {

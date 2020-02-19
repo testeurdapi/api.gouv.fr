@@ -34,6 +34,7 @@ const Title = ({ title, logo }) => (
         font-size: 32px;
         line-height: 43px;
         text-align: center;
+        color: #fff;
       }
     `}</style>
   </>
@@ -50,6 +51,7 @@ const Tagline = ({ tagline }) => (
         line-height: 20px;
         text-align: center;
         margin: 0;
+        color: #fff;
       }
 
       .inline {
@@ -62,8 +64,8 @@ const Tagline = ({ tagline }) => (
 
 const PageHeader = ({ title, logo, tagline }) => (
   <section id="mission-statement">
-    <Link href="/">
-      <a className="back-button">← Page d’accueil</a>
+    <Link href="/rechercher-api">
+      <a className="back-button">← Retour</a>
     </Link>
     <div className="content-container content">
       <Title title={title} logo={logo} />
@@ -73,7 +75,6 @@ const PageHeader = ({ title, logo, tagline }) => (
     <style jsx>{`
       #mission-statement {
         background: ${colors.backgroundBlueGradient};
-        color: white;
         width: 100%;
         position: relative;
       }

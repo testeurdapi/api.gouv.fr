@@ -19,7 +19,7 @@ export const FilterHeader = ({
       <label>Habilitation</label>
       <div>
         <Toggle
-          label="Uniquement les APIs sous habilitation"
+          label="Uniquement les APIs ouvertes à tous"
           onChange={setFilterAccess}
         />
       </div>
